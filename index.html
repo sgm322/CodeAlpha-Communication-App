@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f7f4">
+    <meta name="description" content="Good ideas taste better together. Meet, make, and share in Yappuccino.">
+    <title>Yappuccino — the little meeting place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Yappuccino home">
+          <span class="brand-cup" aria-hidden="true">☕</span>
+          <span>yappuccino<span class="brand-period">.</span></span>
+        </a>
+        <button class="workspace-switch" id="workspace-switch" aria-label="Switch workspace">
+          <span class="workspace-mark">W</span>
+          <span class="workspace-copy"><strong>Weekly sync</strong><small>My workspace</small></span>
+          <span class="chevron">⌄</span>
+        </button>
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a class="nav-item active" href="#room"><span class="nav-icon">◉</span> Meeting room <span class="nav-count">4</span></a>
+          <a class="nav-item" href="#board"><span class="nav-icon">▦</span> Whiteboards</a>
+          <a class="nav-item" href="#files"><span class="nav-icon">▤</span> Shared files</a>
+        </nav>
+        <div class="sidebar-divider"></div>
+        <div class="section-heading"><span class="nav-label">YOUR ROOMS</span><button class="icon-button tiny" id="add-room" aria-label="Create a room">＋</button></div>
+        <div class="room-list" id="room-list">
+          <button class="room-link selected" data-room="weekly-sync"><span class="room-dot lavender"></span> weekly-sync</button>
+          <button class="room-link" data-room="design-huddle"><span class="room-dot peach"></span> design-huddle</button>
+          <button class="room-link" data-room="coffee-corner"><span class="room-dot mint"></span> coffee-corner</button>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="sidebar-tip"><span>✦</span><div><strong>A little room for ideas.</strong><p>Invite your favorite people to this space.</p><button id="invite-link">Invite a teammate <span>↗</span></button></div></div>
+          <button class="profile-button" id="profile-button">
+            <span class="avatar avatar-lavender" id="profile-avatar">Y</span>
+            <span class="profile-copy"><strong id="profile-name">Your profile</strong><small id="profile-status">Sign in to get started</small></span>
+            <span class="chevron">···</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content" id="room">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>My workspace</span><span class="crumb-slash">/</span><strong id="room-breadcrumb">weekly-sync</strong></div>
+          <div class="topbar-actions"><span class="secure-pill"><span>✳</span> Encrypted calls · secure sign-in</span><button class="icon-button" id="help-button" aria-label="Help">?</button><button class="top-avatar" id="top-avatar" aria-label="Profile">Y</button></div>
+        </header>
+        <section class="room-heading">
+          <div><div class="eyebrow"><span class="live-dot"></span> YOUR LITTLE MEETING PLACE</div><h1>Good ideas taste better <span>together.</span></h1><p class="room-subtitle">A comfy corner to catch up, make things, and share the good stuff.</p></div>
+          <button class="invite-button" id="invite-button"><span>＋</span> Invite people</button>
+        </section>
+
+        <section class="meeting-card" aria-label="Video meeting">
+          <div class="meeting-topline"><div class="meeting-title"><span class="live-indicator"></span><strong>In the room</strong><span class="participant-count" id="participant-count">1 here</span></div><div class="meeting-tools"><span class="meeting-time" id="meeting-time">00:00</span><button class="icon-button dark-icon" id="copy-room" aria-label="Copy room link" title="Copy room link">⧉</button><button class="icon-button dark-icon" id="more-button" aria-label="More meeting options">···</button></div></div>
+          <div class="video-grid" id="video-grid">
+            <div class="video-tile self-tile" id="self-tile">
+              <video id="local-video" autoplay muted playsinline></video>
+              <div class="video-placeholder" id="self-placeholder"><span class="avatar avatar-lavender avatar-large" id="self-avatar">Y</span><strong id="self-display-name">Your camera is off</strong><small>Looking good, by the way ✦</small></div>
+              <span class="tile-name" id="self-tile-name">You <span class="mic-indicator" id="self-mic-indicator">♫</span></span>
+              <span class="tile-tag" id="self-tile-tag">THIS IS YOU</span>
+            </div>
+            <div class="video-tile waiting-tile" id="waiting-tile"><span class="waiting-icon">✦</span><strong>Your people go here.</strong><small>Invite someone into the room.</small><button id="empty-invite">Invite a teammate <span>↗</span></button></div>
+          </div>
+          <div class="call-controls">
+            <div class="control-set"><button class="call-control" id="mic-toggle" aria-label="Mute microphone"><span class="control-symbol">♬</span><small>Mute</small></button><button class="call-control" id="camera-toggle" aria-label="Turn camera on"><span class="control-symbol">▣</span><small>Camera</small></button><button class="call-control" id="share-toggle" aria-label="Share your screen"><span class="control-symbol">▤</span><small>Share</small></button><button class="call-control" id="board-toggle" aria-label="Open whiteboard"><span class="control-symbol">✎</span><small>Whiteboard</small></button><button class="call-control" id="files-toggle" aria-label="Share a file"><span class="control-symbol">↥</span><small>Share file</small></button></div>
+            <button class="leave-button" id="leave-button"><span>↗</span> Leave room</button>
+          </div>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="whiteboard-card" id="board">
+            <div class="card-heading"><div><div class="card-kicker"><span class="kicker-icon board-kicker">✎</span> MAKING THINGS TOGETHER</div><h2>The big idea board <span class="board-chip">LIVE</span></h2></div><button class="text-button" id="board-expand">Open board <span>↗</span></button></div>
+            <div class="whiteboard" id="whiteboard-wrap"><div class="board-note note-yellow">small ideas<br>✦ big things</div><div class="board-note note-lilac">What if we<br>made it fun?</div><div class="board-note note-pink">less slides,<br>more snacks 🍓</div><svg class="board-doodle" viewBox="0 0 170 95" aria-hidden="true"><path d="M5 70 C35 8 75 110 110 43 S150 18 165 38" fill="none" stroke="#9255ef" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7"/><path d="M147 28l18 10-19 6" fill="none" stroke="#9255ef" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><canvas id="whiteboard-canvas" aria-label="Shared whiteboard. Draw with your mouse or touch."></canvas><div class="board-tools"><button class="board-tool active" data-tool="draw" aria-label="Draw">✎</button><button class="board-tool" data-tool="erase" aria-label="Erase">⌫</button><input id="board-color" type="color" value="#9255ef" aria-label="Choose drawing color"><button class="board-tool clear-tool" id="clear-board" aria-label="Clear whiteboard">↺</button></div></div>
+          </article>
+          <article class="files-card" id="files">
+            <div class="card-heading"><div><div class="card-kicker"><span class="kicker-icon file-kicker">↥</span> PASS THE GOOD STUFF</div><h2>Files on the table <span class="file-count" id="file-count">0</span></h2></div><button class="upload-button" id="upload-button">＋ Upload</button><input id="file-input" type="file" hidden></div>
+            <div class="file-drop" id="file-drop"><span class="drop-illustration">↥</span><div><strong>Got something to share?</strong><p>Drop a file here or <button id="browse-files">browse</button></p></div><span class="drop-limit">UP TO 10 MB</span></div>
+            <div class="file-list" id="file-list"><div class="empty-files">Files shared in this room will show up here.</div></div>
+          </article>
+        </section>
+        <footer class="footer-note"><span>Made for good conversations</span><span>✦</span><span>Powered by coffee & good company</span></footer>
+      </main>
+      <aside class="activity-panel">
+        <div class="activity-top"><div><span class="activity-kicker">THE HAPPENINGS</span><h2>Room activity</h2></div><button class="icon-button tiny" id="activity-options" aria-label="Activity options">···</button></div>
+        <div class="activity-live"><span class="live-dot"></span> ALL THE LATEST</div>
+        <div class="activity-feed" id="activity-feed"><div class="activity-day"><span></span> ROOM ACTIVITY <span></span></div><div class="activity-event"><span class="activity-avatar avatar-lavender">✦</span><div><p><strong>Your room is ready.</strong> Joins and shared files will show up here.</p><time>just now</time></div></div></div>
+        <div class="activity-bottom"><span class="activity-star">✳</span><p>Good things happen when we <strong>make room</strong> for each other.</p><span class="activity-squiggle">⌁</span></div>
+      </aside>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="modal-backdrop" id="auth-modal" hidden>
+      <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <button class="modal-close" data-close-modal aria-label="Close">×</button><span class="auth-cup">☕</span><p class="card-kicker">YOUR SEAT IS WAITING</p><h2 id="auth-title">Come on in.</h2><p class="auth-intro">Sign in or make an account to join the conversation.</p>
+        <div class="auth-tabs"><button class="auth-tab active" data-mode="login">Sign in</button><button class="auth-tab" data-mode="register">Create account</button></div>
+        <form id="auth-form"><label id="name-field" hidden>Your name<input name="name" autocomplete="name" maxlength="60" placeholder="How should we call you?"></label><label>Email address<input name="email" type="email" autocomplete="email" required placeholder="you@somewhere.com"></label><label>Password<input name="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required placeholder="At least 8 characters"></label><p class="auth-error" id="auth-error"></p><button class="auth-submit" type="submit">Let’s go <span>→</span></button></form>
+        <p class="auth-footnote">Your password is securely hashed before it’s stored.</p>
+      </section>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
